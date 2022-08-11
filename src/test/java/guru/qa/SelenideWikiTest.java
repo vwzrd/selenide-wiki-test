@@ -16,15 +16,13 @@ public class SelenideWikiTest {
         //ищем Selenide
         $("[data-test-selector=nav-search-input]").setValue("selenide").pressEnter();
         //нажимаем на первый результат
-        $$("ul.repo-list li").first().$("a").click();
+        $("ul.repo-list li").$("a").click();
         //проверяем, что попали в правильный репозиторий
         $("#repository-container-header").shouldHave(text("selenide / selenide"));
         //переходим в wiki
         $("#wiki-tab").click();
         //раскрываем полный список страниц
         $("button.js-wiki-more-pages-link").click();
-        //проверяем, что в списке есть SoftAssertions
-        $("[data-filterable-for=wiki-pages-filter]").shouldHave(text("SoftAssertions"));
         //открываем страницу SoftAssertions
         $("[data-filterable-for=wiki-pages-filter]").$(byText("SoftAssertions")).click();
         //проверяем, что в тексте есть пример кода для JUnit5
